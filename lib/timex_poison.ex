@@ -1,7 +1,8 @@
 defmodule TimexPoison do
-  defmacro __using__(_opts) do
+  defmacro __using__(opts) do
+    keys = Keyword.get(opts, :keys, [])
     quote do
-      @keys [:timestamp]
+      @keys unquote(keys)
       @before_compile unquote(__MODULE__)
     end
 
