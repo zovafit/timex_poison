@@ -13,4 +13,21 @@ defmodule TimexPoisonTest do
     assert Protocol.assert_impl!(Poison.Decoder, TestStruct)
     assert %TestStruct{timestamp: %Timex.DateTime{}} = decoded
   end
+
+  test "gracefully handles unparseable dates returning nil" do
+    {:ok, decoded} = Poison.decode(~s({"timestamp": "not a timestamp"}), as: %TestStruct{})
+    assert %TestStruct{timestamp: nil} = decoded
+  end
+
+  defmodule WithDateFormat do
+    use TimexPoison, keys: [:timestamp], format: "{RFC1123}"
+    defstruct [:timestamp]
+  end
+
+  test "accepts a default format for dates" do
+    {:ok, decoded} = Poison.decode(~s({"timestamp" : "Tue, 05 Mar 2013 23:25:19 +0200"}), as: %WithDateFormat{})
+    assert %WithDateFormat{timestamp: %Timex.DateTime{}} = decoded
+  end
+
+  test "individual formatters for keys"
 end
