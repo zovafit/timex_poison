@@ -1,7 +1,7 @@
 defmodule TimexPoison do
   defmacro __using__(opts) do
     keys = Keyword.get(opts, :keys, [])
-    format = Keyword.get(opts, :format, "{ISOz}")
+    format = Keyword.get(opts, :format, "{ISO:Extended:Z}")
     quote do
       @keys unquote(keys)
       @format unquote(format)
