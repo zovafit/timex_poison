@@ -49,7 +49,7 @@ defmodule TimexPoison.Mixfile do
   defp deps do
     [
       {:timex, "~> 2.2"},
-      {:poison, "~> 2.0"},
+      {:poison, "~> 1.5 or ~> 2.0"},
     ]
   end
 end
