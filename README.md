@@ -8,19 +8,19 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
   1. Add `timex_poison` to your list of dependencies in `mix.exs`:
 
-    ```elixir
-    def deps do
-      [{:timex_poison, "~> 0.1.1"}]
-    end
-    ```
+  ```elixir
+  def deps do
+    [{:timex_poison, "~> 0.2.0"}]
+  end
+  ```
 
   2. Ensure `timex_poison` is started before your application:
 
-    ```elixir
-    def application do
-      [applications: [:timex_poison]]
-    end
-    ```
+  ```elixir
+  def application do
+    [applications: [:timex_poison]]
+  end
+  ```
 
 ## Usage
 
